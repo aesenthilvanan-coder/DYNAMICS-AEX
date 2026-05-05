@@ -1,0 +1,7 @@
+{
+  "system_id": "d2r_minimal",
+  "description": "DRD2-oriented test system for minimal real MD validation (protein-only short runs unless ligand topology is added).",
+  "receptor_pdb": "receptor.pdb",
+  "ligand_mol2": "ligand.mol2",
+  "notes": "Fetch receptor.pdb via scripts/fetch_d2r_receptor.py (RCSB). Ligand mol2 is optional for pipeline staging; coupled protein–ligand MD requires a parameterized topology (not bundled here)."
+}

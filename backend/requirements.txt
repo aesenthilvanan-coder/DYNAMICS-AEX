@@ -1,0 +1,45 @@
+# Core
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pydantic==2.8.0
+pydantic-settings==2.4.0
+python-multipart==0.0.9
+
+# Database
+sqlalchemy==2.0.35
+alembic==1.13.3
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+
+# Object storage (optional S3 / MinIO)
+boto3==1.35.0
+
+# Async task queue
+celery[redis]==5.4.0
+redis==5.1.0
+
+# ML / Deep learning
+torch==2.4.0
+torch-geometric==2.6.0
+torch-scatter==2.1.2
+torch-sparse==0.6.18
+transformers==4.44.0
+fair-esm==2.0.0
+
+# Chemistry
+rdkit==2024.3.5
+numpy==1.26.4
+scipy==1.14.0
+h5py==3.11.0
+
+# ML utilities
+scikit-learn==1.5.2
+shap==0.46.0
+matplotlib==3.9.2
+
+# Monitoring
+prometheus-fastapi-instrumentator==7.0.0
+
+# Testing
+pytest==8.3.3
+httpx==0.27.2

@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "n_pairs": 0,
+  "data_source": "empty",
+  "n_real_paired_md_pairs": 0,
+  "n_insufficient_evidence_pairs": 0,
+  "speed": {
+    "n": 0.0,
+    "speedup_mean": null,
+    "speedup_median": null,
+    "wall_time_mean": null
+  },
+  "fidelity_pass_rate": 0.0,
+  "epsilon_total_by_pair": [],
+  "fidelity_rule": "pass iff epsilon_total is not None and epsilon_total < delta_applied (paired physics preferred); placeholder reports never pass",
+  "delta_definition": "delta from paired physics or error_bounds.delta_threshold or 1.0 - fidelity_target",
+  "plots_dir": "/Users/TheAES/Desktop/Caly360 Project/outputs/validation/aex/plots",
+  "note": "Real paired MD only; legacy synthetic_fixture reports are not counted as evidence."
+}

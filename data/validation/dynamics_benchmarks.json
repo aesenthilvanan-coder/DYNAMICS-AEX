@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "systems": [],
+  "_comment": "Add entries with job_dir pointing at a completed GROMACS run (md.tpr, md.xtc, md.edr) or explicit rmsd_xvg paths. No synthetic trajectories are generated."
+}

@@ -1,0 +1,18 @@
+"""Fixed validation thresholds and sample rules (CALY360 spec). Do not change ad hoc."""
+
+from __future__ import annotations
+
+# DYNAMICS — failure heuristics (nm / energy units as in traces)
+DYNAMICS_RMSD_SPIKE_MAX = 5.0
+DYNAMICS_LIGAND_ESCAPE_FRAC_OF_MAX = 0.8
+DYNAMICS_LIGAND_ESCAPE_MIN_LAST = 2.0
+DYNAMICS_ENERGY_JUMP_MAX = 1e6
+DYNAMICS_TEMP_STD_MAX = 15.0
+
+DYNAMICS_MIN_REPLICATES_FOR_STATS = 2
+
+# AEX
+AEX_DEFAULT_FIDELITY_TARGET = 0.95
+AEX_DEFAULT_DELTA = 1.0 - AEX_DEFAULT_FIDELITY_TARGET  # 0.05
+AEX_MISSING_SPEEDUP = 1.0
+AEX_MISSING_WALL_S = 0.0

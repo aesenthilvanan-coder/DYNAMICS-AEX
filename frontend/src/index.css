@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    margin: 0;
+    @apply bg-caly-void text-caly-mist font-sans;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .spectral-border {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 107, 157, 0.35),
+        rgba(255, 184, 77, 0.2),
+        rgba(77, 255, 240, 0.25),
+        rgba(107, 140, 255, 0.35),
+        rgba(167, 139, 250, 0.35)
+      )
+      border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}

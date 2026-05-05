@@ -1,0 +1,83 @@
+AEX — Fully expanded formal system (plain-text reference)
+==========================================================
+Source: Caly360 DYNAMICS / AEX design. Implementation: backend/app/dynamics/aex_*.py and aex_engine.py.
+
+1. Foundational reframe
+-------------------------
+Classical MD: dx/dt = f(x) with fixed discretization.
+AEX: minimize over pi(t), Delta_t(t), S(t) the integral of C(t) dt subject to a chance constraint
+P(||x_AEX(t) - x_true(t)|| > delta) < epsilon.
+pi = execution policy, Delta_t = adaptive timestep field, S = sampling operator,
+C = instantaneous compute cost, delta = structural fidelity tolerance, epsilon = failure probability.
+
+2. Full objective functional
+----------------------------
+J = alpha*Hc + beta*Ec + gamma*Dc + eta*Tc + zeta*Gc + xi*Lc
+Hc: information / entropy of visited states
+Ec: energy conservation error vs E0
+Dc: structural deviation (RMSD vs reference trajectory)
+Tc: temporal efficiency = baseline_steps / executed_steps
+Gc: topological stability from graph Laplacian spectrum variance
+Lc: ligand/interface fidelity (contacts + H-bonds expectations)
+
+3. Multi-scale state tensor
+---------------------------
+X(t) stacks representations at atom, residue, domain, complex, graph, and signal layers;
+each layer contributes to J and has its own stability criteria.
+
+4. Dual stability (local + global + spectral)
+---------------------------------------------
+(A) Local: contraction / Jacobian spectrum proxy
+(B) Global: energy landscape basin: Delta Phi < epsilon_Phi
+(C) Spectral: ||lambda(G(t)) - lambda(G(t-tau))|| < epsilon_G
+Execution reduction only when all three hold.
+
+5. Phase-space curvature
+------------------------
+K(t) ~ Hessian of effective potential along trajectory; stability radius r_s ~ 1/||K||;
+safe Delta_t_max scales with r_s.
+
+6. Information gain suppression
+--------------------------------
+Delta_I = H(x_{t+1}) - H(x_t); if Delta_I < epsilon_I, information-saturated -> can compress execution.
+
+7. Adaptive execution policy pi(t)
+----------------------------------
+Full MD if unstable; reduced stepping if stable and informative; compress/skip if stable and
+non-informative; terminate if globally converged.
+
+8. Deterministic early termination
+-----------------------------------
+Over window tau: |dE/dt|, |dRMSD/dt|, sigma(G), and Delta_I below thresholds simultaneously;
+then bound ||x_AEX - x_full|| with exponential tail on violation probability (design target).
+
+9. Error bounding (95%+ fidelity narrative)
+-------------------------------------------
+epsilon_num ~ O(Delta t^2); epsilon_struct = ||x_AEX - x_baseline||; epsilon_graph = ||G_AEX - G_baseline||;
+epsilon_total = w1*epsilon_num + w2*epsilon_struct + w3*epsilon_graph < delta.
+
+10. Chaos detection
+--------------------
+Lyapunov proxy > 0 -> contract timestep, rollback checkpoint, rerun higher fidelity.
+
+11. Multi-layer execution stack
+--------------------------------
+(1) Physics enforcement (integrator, energy bounds)
+(2) Predictive stability (curvature, Lyapunov radius)
+(3) Information filter
+(4) Biological signal (graph, ligand)
+(5) Policy engine
+(6) Validation + audit (manifest, reproducibility)
+
+12. Determinism
+---------------
+Execution path as deterministic function of x0, parameters, and recorded environment fingerprint;
+no stochastic skipping / learned shortcuts / probabilistic pruning in the AEX policy design.
+
+13–15. Fidelity, acceleration, definition
+-----------------------------------------
+Fidelity: no reduction in unstable regions; curvature-bounded timesteps; multi-domain convergence;
+chaos detection; tri-domain error budget.
+Acceleration: exploit redundancy, saturation, basin stability — skip recomputation of converged phases.
+Definition: deterministic multi-scale information-constrained optimal control over Hamiltonian
+phase space with curvature-bounded integration and graph constraints, bounded deviation from full MD.

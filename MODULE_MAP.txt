@@ -1,0 +1,49 @@
+Spec section 4 (DYNAMICS module) → repository paths
+----------------------------------------------------
+
+4.1 gromacs_runner.py     → python_package/gromacs_runner.py
+4.2 mdp_generator.py      → python_package/mdp_generator.py
+4.3 aex_engine.py         → python_package/aex_engine.py
+    (+ split helpers)     → python_package/aex_curvature.py
+                          → python_package/aex_information.py
+                          → python_package/aex_stability.py
+4.4 estimator.py          → python_package/estimator.py
+
+Also in python_package/ (same package, same import root app.dynamics):
+
+  __init__.py             Public exports
+  output_packager.py      ZIP outputs
+  pdb_sanitize.py         PDB prep for GROMACS
+  topology_builder.py     Ligand / topol merge
+  gromacs_extract.py      RMSD/energy .xvg extraction
+  observables.py          .xvg stats
+  failures.py             MD failure taxonomy
+  reproducibility.py      Replicate comparison
+  evaluate_dynamics.py    Benchmark validation runner
+  routes.py               FastAPI /dynamics router
+  schemas.py              Pydantic job schemas
+  service.py              Upload paths + estimates
+  celery_tasks.py         run_dynamics_job
+  local_bootstrap.py      Local Docker/GROMACS bootstrap script generator
+
+HTTP compatibility shims (re-export app.dynamics.*):
+
+  backend/app/api/dynamics/routes.py
+  backend/app/api/dynamics/schemas.py
+  backend/app/api/dynamics/service.py
+
+Worker shim:
+
+  backend/app/workers/dynamics_worker.py  → imports celery_tasks
+
+Frontend (React):
+
+  frontend_components/    -> ../frontend/src/components/dynamics/
+  frontend/src/pages/Dynamics.tsx
+  frontend/src/api/dynamics.ts
+  frontend/src/types/dynamics.ts
+  frontend/src/lib/prepareSimulateEnvironment.ts
+
+Validation shims (re-export into app.dynamics):
+
+  backend/app/validation/dynamics/*.py

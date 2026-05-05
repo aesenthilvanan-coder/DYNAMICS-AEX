@@ -1,0 +1,65 @@
+# Mamba/conda environments (640 MB+)
+.tools/
+
+# Node dependencies and build artifacts
+node_modules/
+**/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python compiled files
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Python virtual environments
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Environment secrets (keep .env.example)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Molecular dynamics large binary/trajectory outputs
+*.xtc
+*.trr
+*.edr
+*.tpr
+*.cpt
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+*.spec
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db

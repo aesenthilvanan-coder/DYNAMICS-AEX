@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "n_systems": 0,
+  "n_failures": 0,
+  "data_source": "none",
+  "n_real_md_systems": 0,
+  "n_missing_traces": 0,
+  "auto_extract_from_job_dir": true,
+  "failures_by_class": {},
+  "plots_dir": "/Users/TheAES/Desktop/Caly360 Project/outputs/validation/dynamics/plots",
+  "note": "No synthetic trajectories: systems without RMSD .xvg count as missing."
+}

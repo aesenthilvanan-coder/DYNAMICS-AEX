@@ -1,0 +1,4 @@
+{
+  "pairs": [],
+  "_comment": "Optional legacy manifest for empirical AEX runs. Use real baseline_dir and aex_dir from paired MD jobs only."
+}

@@ -1,0 +1,71 @@
+{
+  "hub_version": 2,
+  "hub_symlinks": {
+    "scripts": "DYNAMICS/scripts/ → ../scripts/ (dynamics + AEX entrypoints only; not the full scripts tree)",
+    "notebooks": "DYNAMICS/notebooks/ → ../notebooks/aex_analysis.ipynb only",
+    "data": "DYNAMICS/data/ → dynamics validation manifests + test_systems/d2r_ligand only (not ../data wholesale)",
+    "python_package": "../backend/app/dynamics",
+    "frontend_components": "../frontend/src/components/dynamics",
+    "deployment": "docker-compose.yml + Dockerfiles + nginx (see DYNAMICS/deployment/)"
+  },
+  "canonical_python_package": "backend/app/dynamics",
+  "description": "All DYNAMICS runtime, HTTP surface, Celery task, and AEX logic under app.dynamics",
+  "python_modules": [
+    "backend/app/dynamics/__init__.py",
+    "backend/app/dynamics/aex_curvature.py",
+    "backend/app/dynamics/aex_engine.py",
+    "backend/app/dynamics/aex_information.py",
+    "backend/app/dynamics/aex_stability.py",
+    "backend/app/dynamics/celery_tasks.py",
+    "backend/app/dynamics/evaluate_dynamics.py",
+    "backend/app/dynamics/estimator.py",
+    "backend/app/dynamics/failures.py",
+    "backend/app/dynamics/gromacs_extract.py",
+    "backend/app/dynamics/gromacs_runner.py",
+    "backend/app/dynamics/local_bootstrap.py",
+    "backend/app/dynamics/mdp_generator.py",
+    "backend/app/dynamics/observables.py",
+    "backend/app/dynamics/output_packager.py",
+    "backend/app/dynamics/pdb_sanitize.py",
+    "backend/app/dynamics/reproducibility.py",
+    "backend/app/dynamics/routes.py",
+    "backend/app/dynamics/schemas.py",
+    "backend/app/dynamics/service.py",
+    "backend/app/dynamics/topology_builder.py"
+  ],
+  "api_shims": [
+    "backend/app/api/dynamics/__init__.py",
+    "backend/app/api/dynamics/routes.py",
+    "backend/app/api/dynamics/schemas.py",
+    "backend/app/api/dynamics/service.py"
+  ],
+  "worker_shim": ["backend/app/workers/dynamics_worker.py"],
+  "celery_registration": "backend/app/core/celery_app.py",
+  "validation_shims": [
+    "backend/app/validation/dynamics/__init__.py",
+    "backend/app/validation/dynamics/evaluate_dynamics.py",
+    "backend/app/validation/dynamics/failures.py",
+    "backend/app/validation/dynamics/gromacs_extract.py",
+    "backend/app/validation/dynamics/observables.py",
+    "backend/app/validation/dynamics/reproducibility.py"
+  ],
+  "frontend": [
+    "frontend/src/components/dynamics/AEXToggle.tsx",
+    "frontend/src/components/dynamics/DynamicsSpotlight.tsx",
+    "frontend/src/components/dynamics/OutputDownloader.tsx",
+    "frontend/src/components/dynamics/ProgressTracker.tsx",
+    "frontend/src/components/dynamics/SimulationForm.tsx",
+    "frontend/src/pages/Dynamics.tsx",
+    "frontend/src/api/dynamics.ts",
+    "frontend/src/types/dynamics.ts",
+    "frontend/src/hooks/useDynamicsJob.ts",
+    "frontend/src/lib/prepareSimulateEnvironment.ts"
+  ],
+  "tests": [
+    "backend/tests/test_aex_engine.py",
+    "backend/tests/test_aex_fidelity_rules.py",
+    "backend/tests/test_gromacs_runner.py",
+    "backend/tests/test_pdb_sanitize.py",
+    "backend/tests/test_topology_builder.py"
+  ]
+}

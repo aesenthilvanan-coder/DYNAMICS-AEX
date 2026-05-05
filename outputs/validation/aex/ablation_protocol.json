@@ -1,0 +1,25 @@
+{
+  "ablations": [
+    {
+      "id": "no_chaos_fallback",
+      "description": "Disable chaos \u2192 FULL_MD escalation in engine config."
+    },
+    {
+      "id": "no_spectral_check",
+      "description": "Relax spectral stability gate (eps3 \u2192 inf)."
+    },
+    {
+      "id": "no_convergence_stop",
+      "description": "Disable early TERMINATE on convergence."
+    },
+    {
+      "id": "no_rollback",
+      "description": "Disable segment rollback on failure."
+    },
+    {
+      "id": "relaxed_delta",
+      "description": "Increase fidelity delta (weaker epsilon bound)."
+    }
+  ],
+  "note": "Implement by cloning AEXConfig in benchmark driver."
+}
